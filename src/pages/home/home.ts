@@ -1,14 +1,31 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { DetailPage } from '../detail/detail';
+import { GamesProvider } from '../../providers/games/games';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+ selector: 'page-home',
+ templateUrl: 'home.html'
 })
+
 export class HomePage {
+ games: object[] = []
+ constructor(
+   public gamesProvider: GamesProvider,
+   public navCtrl: NavController,
+   public navParams: NavParams) {
+     this.games = this.gamesProvider.games
+ }
+ 
+ convertObjectToString(obj) {
+   return JSON.stringify(obj)
+ }
 
-  constructor(public navCtrl: NavController) {
-
-  }
-
+ convertPlatformToString(platform) {
+   return platform.join(' - ')
+ }
+ 
+ openDetail(game, index) {
+   this.navCtrl.push(DetailPage, { game, index })
+ }
 }

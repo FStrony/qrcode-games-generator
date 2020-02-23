@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalhes do jogo</ion-title>
+  </ion-navbar>
+ </ion-header>
+ <ion-content padding>
+  <ion-list>
+    <ion-list-header>Detalhes</ion-list-header>
+    <ion-item>
+      <ion-label color="primary" stacked>Nome do jogo</ion-label>
+      <ion-input [(ngModel)]="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nintendo Switch</ion-label>
+      <ion-checkbox [(ngModel)]="switch" (ionChange)="updatePlatform(switch, 'Nintendo Switch')"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>PC</ion-label>
+      <ion-checkbox [(ngModel)]="pc" (ionChange)="updatePlatform(pc, 'PC')"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Playstation 4</ion-label>
+      <ion-checkbox [(ngModel)]="ps4" (ionChange)="updatePlatform(ps4, 'Playstation 4')"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Xbox One</ion-label>
+      <ion-checkbox [(ngModel)]="xbox" (ionChange)="updatePlatform(xbox, 'Xbox One')"></ion-checkbox>
+    </ion-item>
+    <ion-list-header>QrCode</ion-list-header>
+  </ion-list>
+  <ion-card *ngIf="qrCode">
+    <ngx-qrcode [qrc-value]="qrCode"></ngx-qrcode>
+  </ion-card>
+  <button ion-button full (click)="createCode()">Gerar QRCode</button>
+ </ion-content>
