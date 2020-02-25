@@ -4,8 +4,8 @@
       Lista de jogos
     </ion-title>
   </ion-navbar>
- </ion-header>
- <ion-content>
+</ion-header>
+<ion-content>
   <ion-list>
     <ion-item *ngFor="let game of games;let i = index" (click)="openDetail(game, i)">
       <ion-thumbnail item-start>
@@ -15,7 +15,8 @@
       <p>{{ convertPlatformToString(game.platform) }}</p>
     </ion-item>
   </ion-list>
-  <ion-fab bottom right (click)="openDetail()">
-    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="openDetail()"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab mini (click)="openCamera()"><ion-icon name="camera"></ion-icon></button>
   </ion-fab>
- </ion-content>
+</ion-content>
